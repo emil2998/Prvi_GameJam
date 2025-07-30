@@ -29,20 +29,63 @@ public class PlayerMovement : MonoBehaviour
         animator.SetBool("WalkForward", isWalking);
         
     }
+    public void WalkBack(bool isWalking)
+    {
+        animator.SetBool("WalkBack", isWalking);
+
+    }
+    public void WalkRight(bool isWalking)
+    {
+        animator.SetBool("WalkRight", isWalking);
+
+    }
+    public void WalkLeft(bool isWalking)
+    {
+        animator.SetBool("WalkLeft", isWalking);
+
+    }
 
 
-     public void MovePlayer(InputAction.CallbackContext context)
+    public void MovePlayer(InputAction.CallbackContext context)
     {
         
         moveInput = context.ReadValue<Vector2>();
+
+       Debug.Log(moveInput);
         if(moveInput == Vector3.up)
         {
             WalkForward(true);
-        Debug.Log(moveInput);
         }
         else
         {
             WalkForward(false);
+        }
+        
+        if (moveInput == -Vector3.up)
+        {
+            WalkBack(true);
+        }
+        else
+        {
+            WalkBack(false);
+        }
+
+        if (moveInput == Vector3.right)
+        {
+            WalkRight(true);
+        }
+        else
+        {
+            WalkRight(false);
+        }
+
+        if (moveInput == -Vector3.right)
+        {
+            WalkLeft(true);
+        }
+        else
+        {
+            WalkLeft(false);
         }
     }
 
