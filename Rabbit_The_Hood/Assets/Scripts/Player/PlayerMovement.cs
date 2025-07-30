@@ -19,74 +19,23 @@ public class PlayerMovement : MonoBehaviour
     private Vector3 forward;
     private Vector3 right;
 
+    private float currentHorizontal = 0f;
+    private float currentVertical = 0f;
+
+    private float horizontalVelocity = 0f;
+    private float verticalVelocity = 0f;
+
+    [SerializeField] private float animationSmoothTime = 0.15f;
+
     private void Awake()
     {
         characterController = GetComponent<CharacterController>();
     }
 
-    public void WalkForward(bool isWalking)
-    {
-        animator.SetBool("WalkForward", isWalking);
-        
-    }
-    public void WalkBack(bool isWalking)
-    {
-        animator.SetBool("WalkBack", isWalking);
-
-    }
-    public void WalkRight(bool isWalking)
-    {
-        animator.SetBool("WalkRight", isWalking);
-
-    }
-    public void WalkLeft(bool isWalking)
-    {
-        animator.SetBool("WalkLeft", isWalking);
-
-    }
-
-
     public void MovePlayer(InputAction.CallbackContext context)
     {
         
         moveInput = context.ReadValue<Vector2>();
-
-       Debug.Log(moveInput);
-        if(moveInput == Vector3.up)
-        {
-            WalkForward(true);
-        }
-        else
-        {
-            WalkForward(false);
-        }
-        
-        if (moveInput == -Vector3.up)
-        {
-            WalkBack(true);
-        }
-        else
-        {
-            WalkBack(false);
-        }
-
-        if (moveInput == Vector3.right)
-        {
-            WalkRight(true);
-        }
-        else
-        {
-            WalkRight(false);
-        }
-
-        if (moveInput == -Vector3.right)
-        {
-            WalkLeft(true);
-        }
-        else
-        {
-            WalkLeft(false);
-        }
     }
 
     public void PlayerJump(InputAction.CallbackContext context)
@@ -110,6 +59,12 @@ public class PlayerMovement : MonoBehaviour
         velocity.y += gravity * Time.deltaTime;
         characterController.Move(velocity * Time.deltaTime);
 
-        
+
+        currentHorizontal = Mathf.SmoothDamp(currentHorizontal, moveInput.x, ref horizontalVelocity, animationSmoothTime);
+        currentVertical = Mathf.SmoothDamp(currentVertical, moveInput.y, ref verticalVelocity, animationSmoothTime);
+
+        animator.SetFloat("Horizontal", currentHorizontal);
+        animator.SetFloat("Vertical", currentVertical);
+
     }
 }

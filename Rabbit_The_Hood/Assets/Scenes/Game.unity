@@ -529,7 +529,7 @@ PrefabInstance:
     - target: {fileID: 8417361359673230750, guid: 226475c7cd175a543b67926ca2432473, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 0d07cc39fa591db45af92ba858cf890b, type: 2}
+      objectReference: {fileID: 2100000, guid: c8898a7c169e46f4498e6d73d7e1ee9c, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -813,6 +813,7 @@ MonoBehaviour:
   jumpHeight: 2
   gravity: -9.81
   moveDirection: {x: 0, y: 0, z: 0}
+  animationSmoothTime: 0.1
 --- !u!114 &1547233758
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3825,7 +3826,7 @@ Animator:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7486730631794691726}
   m_Enabled: 1
-  m_Avatar: {fileID: 0}
+  m_Avatar: {fileID: 9000000, guid: 792280162dd89ee47ad23fedd5a7f21b, type: 3}
   m_Controller: {fileID: 9100000, guid: 311d02916cbfba844812bde35481cd07, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
