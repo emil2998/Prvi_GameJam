@@ -25,17 +25,48 @@ public class PlayerMovement : MonoBehaviour
     private float horizontalVelocity = 0f;
     private float verticalVelocity = 0f;
 
+    private PlayerControls inputActions;
+
+
     [SerializeField] private float animationSmoothTime = 0.15f;
 
     private void Awake()
     {
+        inputActions = new PlayerControls();
         characterController = GetComponent<CharacterController>();
     }
+
 
     public void MovePlayer(InputAction.CallbackContext context)
     {
         
         moveInput = context.ReadValue<Vector2>();
+    }
+    private void OnEnable()
+    {
+        inputActions.Enable();
+        inputActions.CameraControls.Aim.performed += Shoot;   // Assuming your action map is Gameplay and action is Shoot
+        inputActions.CameraControls.Aim.canceled += Shoot;    // To detect button release for animator reset
+    }
+
+    private void OnDisable()
+    {
+        inputActions.CameraControls.Aim.performed -= Shoot;
+        inputActions.CameraControls.Aim.canceled -= Shoot;
+        inputActions.Disable();
+    }
+
+    public void Shoot(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            Debug.Log("Right Mouse Button clicked!");
+            animator.SetBool("Aiming", true);
+        }
+        else
+        {
+            animator.SetBool("Aiming", false);
+        }
     }
 
     public void PlayerJump(InputAction.CallbackContext context)
@@ -43,8 +74,25 @@ public class PlayerMovement : MonoBehaviour
         if (context.performed && characterController.isGrounded)
         {
             velocity.y = Mathf.Sqrt(jumpHeight * -1f * gravity);
+
+            if(moveInput != Vector3.zero)
+            {
+                animator.SetBool("RunJump", true);
+            }
+            else
+            {
+                animator.SetBool("Jump", true);
+            }          
+        }
+        else
+        {
+  
+            animator.SetBool("RunJump", false);
+            animator.SetBool("Jump", false);
+            
         }
     }
+
 
     private void Update()
     {
