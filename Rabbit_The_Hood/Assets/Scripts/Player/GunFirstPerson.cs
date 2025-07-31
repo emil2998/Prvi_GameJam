@@ -11,9 +11,9 @@ public class GunFirstPerson : MonoBehaviour
 
     private Bullet bullet;
 
-    public bool canFire = true;
+    public bool canFire;
+    private bool isCouroutineRunning = false;
 
-    //[SerializeField] private float minChargeTime = 0.1f;
     [SerializeField] private float maxChargeTime = 2f;
     [SerializeField] private float minSpeed = 6f;
     [SerializeField] private float maxSpeed = 25f;
@@ -28,12 +28,17 @@ public class GunFirstPerson : MonoBehaviour
         inputActions = new PlayerControls();
     }
 
+    private void Start()
+    {
+        canFire = false;
+    }
+
     private void OnEnable()
     {
         inputActions.Enable();
         inputActions.Gameplay.Shoot.started += OnShootStarted;
-        inputActions.Gameplay.Shoot.performed += OnShootPerformed; 
-        inputActions.Gameplay.Shoot.canceled += OnShootCanceled;  
+        inputActions.Gameplay.Shoot.performed += OnShootPerformed;
+        inputActions.Gameplay.Shoot.canceled += OnShootCanceled;
     }
 
     private void OnDisable()
@@ -53,7 +58,7 @@ public class GunFirstPerson : MonoBehaviour
 
     private void OnShootPerformed(InputAction.CallbackContext context)
     {
-  
+
         if (!canFire || !isCharging) return;
         isCharging = false;
         ShootCharged(maxSpeed);
@@ -73,14 +78,17 @@ public class GunFirstPerson : MonoBehaviour
     {
         bullet = Instantiate(bulletPrefab, muzzle.position, muzzle.rotation).GetComponent<Bullet>();
         bullet.speed = bulletSpeed;
-     
-        StartCoroutine(CoolDown(singleFireCooldown));
+
+        if (!isCouroutineRunning)
+        {
+            StartCoroutine(CoolDown(singleFireCooldown));
+        }
     }
 
     IEnumerator CoolDown(float cooldown)
     {
-        canFire = false;
+        isCouroutineRunning = true;
         yield return new WaitForSeconds(cooldown);
-        canFire = true;
+        isCouroutineRunning = false;
     }
 }

@@ -39,35 +39,8 @@ public class PlayerMovement : MonoBehaviour
 
     public void MovePlayer(InputAction.CallbackContext context)
     {
-        
+
         moveInput = context.ReadValue<Vector2>();
-    }
-    
-    private void OnEnable()
-    {
-        inputActions.Enable();
-        inputActions.CameraControls.Aim.performed += Shoot;   
-        inputActions.CameraControls.Aim.canceled += Shoot;    
-    }
-
-    private void OnDisable()
-    {
-        inputActions.CameraControls.Aim.performed -= Shoot;
-        inputActions.CameraControls.Aim.canceled -= Shoot;
-        inputActions.Disable();
-    }
-
-    public void Shoot(InputAction.CallbackContext context)
-    {
-        if (context.performed)
-        {
-            Debug.Log("Right Mouse Button clicked!");
-            animator.SetBool("Aiming", true);
-        }
-        else
-        {
-            animator.SetBool("Aiming", false);
-        }
     }
 
     public void PlayerJump(InputAction.CallbackContext context)
@@ -76,27 +49,26 @@ public class PlayerMovement : MonoBehaviour
         {
             velocity.y = Mathf.Sqrt(jumpHeight * -1f * gravity);
 
-            if(moveInput != Vector3.zero)
+            if (moveInput != Vector3.zero)
             {
                 animator.SetBool("RunJump", true);
             }
             else
             {
                 animator.SetBool("Jump", true);
-            }          
+            }
         }
         else
         {
-  
             animator.SetBool("RunJump", false);
             animator.SetBool("Jump", false);
-            
         }
     }
 
 
     private void Update()
     {
+
         forward = transform.forward;
         right = transform.right;
         forward.y = 0;

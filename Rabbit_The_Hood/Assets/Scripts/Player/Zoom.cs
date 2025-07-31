@@ -14,7 +14,7 @@ public class Zoom : MonoBehaviour
     private float minZoom = 60f;
     private float maxZoom = 30f;
 
-    [SerializeField]private GunFirstPerson gunFirstPerson;
+    [SerializeField] private GunFirstPerson gunFirstPerson;
 
     private void Awake()
     {
@@ -23,7 +23,7 @@ public class Zoom : MonoBehaviour
     private void Start()
     {
         slingOfDavid.enabled = false;
-     
+
         SetCameraPriority();
     }
     private void Update()
@@ -39,7 +39,7 @@ public class Zoom : MonoBehaviour
 
         if (Input.GetMouseButtonDown(1))
         {
-         
+
             slingOfDavid.enabled = true;
             isFirstPerson = !isFirstPerson;
 
@@ -53,9 +53,6 @@ public class Zoom : MonoBehaviour
             }
             SetCameraPriority();
         }
-
-        
-        
     }
 
     void SetCameraPriority()
@@ -70,7 +67,7 @@ public class Zoom : MonoBehaviour
             FirstPersonCamera.Priority = 10;
             ThirdPersonCamera.Priority = 20;
 
-           slingOfDavid.enabled = false;
+            slingOfDavid.enabled = false;
         }
     }
 

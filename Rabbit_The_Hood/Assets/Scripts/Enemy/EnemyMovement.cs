@@ -1,10 +1,10 @@
 
 using UnityEngine;
-using UnityEngine.InputSystem;
+
 
 public class EnemyMovement : MonoBehaviour
 {
-     private Animator animator;
+    private Animator animator;
 
     public Transform playerTarget;
     [SerializeField] private float movementSpeed = 1f;
@@ -19,14 +19,20 @@ public class EnemyMovement : MonoBehaviour
     private enum State { Moving, Waiting, Idle }
     private State currentState = State.Moving;
 
+    [SerializeField] private PlayerHP playerHP;
+
+    public bool isDead = false;
+
     private void Awake()
     {
+        playerHP = FindAnyObjectByType<PlayerHP>();
         animator = GetComponent<Animator>();
         enemyRigidbody = GetComponent<Rigidbody>();
     }
 
     private void Update()
     {
+        if (isDead) { return; }
         distanceToPlayer = Vector3.Distance(transform.position, playerTarget.position);
 
         switch (currentState)
@@ -61,6 +67,8 @@ public class EnemyMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
+
+        if (isDead) { return; }
         if (currentState == State.Moving)
         {
             animator.SetBool("Walking", true);
@@ -68,14 +76,16 @@ public class EnemyMovement : MonoBehaviour
             Vector3 direction = (playerTarget.position - transform.position).normalized;
             Vector3 newPosition = transform.position + direction * movementSpeed * Time.fixedDeltaTime;
             enemyRigidbody.MovePosition(newPosition);
-        }  
+        }
 
-        if(currentState == State.Idle)
+        if (currentState == State.Idle)
         {
             animator.SetBool("Walking", false);
             animator.SetBool("Attacking", true);
+
+
         }
-        if(currentState == State.Waiting)
+        if (currentState == State.Waiting)
         {
             animator.SetBool("Walking", false);
             animator.SetBool("Attacking", false);
@@ -89,5 +99,7 @@ public class EnemyMovement : MonoBehaviour
             player.Damage(damage);
         }
     }
+
+
 }
 
