@@ -1,54 +1,9 @@
 fileFormatVersion: 2
-guid: e0f54b5d308c70e40a1875a770073793
+guid: 7297fdaa657ffb34ab486e710ba735d7
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Bars
-    second: {fileID: 2100000, guid: e1fe490f45f9182408aee8a37044c7b7, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Floor
-    second: {fileID: 2100000, guid: af48b26d28990ae49b39fd83f6a0e665, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Wall
-    second: {fileID: 2100000, guid: aed105e9477f7044ba673bb426a82acf, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Window
-    second: {fileID: 2100000, guid: 0857459c14bff554f90b462fe8552729, type: 2}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: Floor_Color
-    second: {fileID: 2800000, guid: c0f4960531e76ad4e95cb7dd1e49af64, type: 3}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: Floor_Normal
-    second: {fileID: 2800000, guid: 2fed970d38530c240b836332b9f5cbc0, type: 3}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: Wall_Bricks_Normal
-    second: {fileID: 2800000, guid: 2b42068916d4a3e478dfc6dd00729891, type: 3}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: Wall_Color
-    second: {fileID: 2800000, guid: 60d779b74cc61f94496a012e3ea81ef7, type: 3}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: Window_Color
-    second: {fileID: 2800000, guid: 3c05a23bc5f9d8f40979462e3ca27011, type: 3}
+  externalObjects: {}
   materials:
     materialImportMode: 2
     materialName: 0
