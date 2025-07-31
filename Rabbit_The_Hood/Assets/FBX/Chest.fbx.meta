@@ -1,9 +1,39 @@
 fileFormatVersion: 2
-guid: f0cdafa08f620ae4f905ef8c984d8e96
+guid: 0c51e901bb2572d45885caa3dce7a39f
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.001
+    second: {fileID: 2100000, guid: c535548029edf7f418d0d1c85d2c4261, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.002
+    second: {fileID: 2100000, guid: e156b61c6d8b346489d4ce416d14288d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.003
+    second: {fileID: 2100000, guid: b00b823ee1f4bf2489b3bdc2450e31d6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Treasure
+    second: {fileID: 2100000, guid: 44435f57ed169464e9ba459a831959f7, type: 2}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Treasure_Color
+    second: {fileID: 2800000, guid: 934d1f3089db49048b6ba6a3bbcd95df, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: chest texture
+    second: {fileID: 2800000, guid: 290fac521ff20ee4a8215e57b1a58612, type: 3}
   materials:
     materialImportMode: 2
     materialName: 0

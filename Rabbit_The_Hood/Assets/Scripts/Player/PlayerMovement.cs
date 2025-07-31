@@ -42,11 +42,12 @@ public class PlayerMovement : MonoBehaviour
         
         moveInput = context.ReadValue<Vector2>();
     }
+    
     private void OnEnable()
     {
         inputActions.Enable();
-        inputActions.CameraControls.Aim.performed += Shoot;   // Assuming your action map is Gameplay and action is Shoot
-        inputActions.CameraControls.Aim.canceled += Shoot;    // To detect button release for animator reset
+        inputActions.CameraControls.Aim.performed += Shoot;   
+        inputActions.CameraControls.Aim.canceled += Shoot;    
     }
 
     private void OnDisable()
