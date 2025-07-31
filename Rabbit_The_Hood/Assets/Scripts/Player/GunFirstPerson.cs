@@ -13,7 +13,7 @@ public class GunFirstPerson : MonoBehaviour
 
     public bool canFire = true;
 
-    [SerializeField] private float minChargeTime = 0.1f;
+    //[SerializeField] private float minChargeTime = 0.1f;
     [SerializeField] private float maxChargeTime = 2f;
     [SerializeField] private float minSpeed = 6f;
     [SerializeField] private float maxSpeed = 25f;

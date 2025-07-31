@@ -5,6 +5,7 @@ public class Bullet : MonoBehaviour
 {
     public float speed = 6f;
     private Rigidbody rb;
+
     [SerializeField] private float bulletDamage = 50f;
 
     private Vector3 gravityDirection = Vector3.down;
@@ -25,7 +26,6 @@ public class Bullet : MonoBehaviour
     
     void FixedUpdate()
     {
-
         if (fired)
         {
             Vector3 gravity = gravityDirection.normalized * gravityStrength;
@@ -34,13 +34,12 @@ public class Bullet : MonoBehaviour
     }
 
     private void OnTriggerEnter(Collider other)
-    {/*
+    {
         if (other.TryGetComponent(out Enemy enemy))
         {
             enemy.Damage(bulletDamage);
             Destroy(gameObject);
-        }
-        */
-        Destroy(gameObject);
+        }   
+       // Destroy(gameObject);
     }
 }
