@@ -1,4 +1,5 @@
 
+using System.Collections;
 using UnityEngine;
 
 
@@ -33,8 +34,10 @@ public class EnemyMovement : MonoBehaviour
     private Transform currentPatrolTarget;
     private float patrolReachThreshold = 0.2f;
 
+    private bool isIdlingInPatrol = false;
     private void Start()
     {
+        isIdlingInPatrol = false;
         playerSpotted = false;
         currentPatrolTarget = pointA;
 
@@ -65,8 +68,19 @@ public class EnemyMovement : MonoBehaviour
         // Switch target if close enough
         if (distanceToTarget < patrolReachThreshold)
         {
-            currentPatrolTarget = currentPatrolTarget == pointA ? pointB : pointA;
+            StartCoroutine(Cooldown());
+            //currentPatrolTarget = currentPatrolTarget == pointA ? pointB : pointA;
         }
+    }
+
+    private IEnumerator Cooldown()
+    {
+        isIdlingInPatrol = true;
+        animator.SetBool("Walking", false);
+        animator.SetBool("Attacking", false);
+        yield return new WaitForSeconds(5f);
+        currentPatrolTarget = currentPatrolTarget == pointA ? pointB : pointA;
+        isIdlingInPatrol = false;
     }
 
     private void Update()
@@ -117,7 +131,11 @@ public class EnemyMovement : MonoBehaviour
         if (isDead) { return; }
         if (!playerSpotted)
         {
-            Patrol();
+            if (!isIdlingInPatrol)
+            {
+                Patrol();
+            }
+            
             return;
         }
         if (currentState == State.Moving)

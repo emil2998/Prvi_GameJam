@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class GunFirstPerson : MonoBehaviour
 {
@@ -23,6 +24,8 @@ public class GunFirstPerson : MonoBehaviour
 
     private PlayerControls inputActions;
 
+    [SerializeField] private Image chargeFillImageLeft;
+    [SerializeField] private Image chargeFillImageRight;
     private void Awake()
     {
         inputActions = new PlayerControls();
@@ -62,6 +65,7 @@ public class GunFirstPerson : MonoBehaviour
         if (!canFire || !isCharging) return;
         isCharging = false;
         ShootCharged(maxSpeed);
+
     }
 
     private void OnShootCanceled(InputAction.CallbackContext context)
@@ -72,6 +76,8 @@ public class GunFirstPerson : MonoBehaviour
         float t = Mathf.Clamp01(held / maxChargeTime);
         float speedToUse = Mathf.Lerp(minSpeed, maxSpeed, t);
         ShootCharged(speedToUse);
+
+
     }
 
     private void ShootCharged(float bulletSpeed)
@@ -85,6 +91,22 @@ public class GunFirstPerson : MonoBehaviour
         }
     }
 
+    private void Update()
+    {
+        if (isCharging)
+        {
+            float held = Time.time - chargeStartTime;
+            float t = Mathf.Clamp01(held / maxChargeTime);
+            chargeFillImageLeft.fillAmount = t;
+            chargeFillImageRight.fillAmount = t;
+        }
+        else
+        {
+            // Optionally reset when not charging
+            chargeFillImageLeft.fillAmount = 0f;
+            chargeFillImageRight.fillAmount = 0f;
+        }
+    }
     IEnumerator CoolDown(float cooldown)
     {
         isCouroutineRunning = true;
