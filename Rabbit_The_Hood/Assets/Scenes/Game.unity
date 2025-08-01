@@ -11913,7 +11913,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerTarget: {fileID: 1230301617}
-  movementSpeed: 1
+  movementSpeed: 1.5
   stopDistance: 1
   resumeDelay: 1
   playerHP: {fileID: 0}
@@ -12357,7 +12357,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerTarget: {fileID: 1230301617}
-  movementSpeed: 1
+  movementSpeed: 1.5
   stopDistance: 1
   resumeDelay: 1
   playerHP: {fileID: 0}
@@ -12976,7 +12976,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerTarget: {fileID: 1230301617}
-  movementSpeed: 1
+  movementSpeed: 1.5
   stopDistance: 1
   resumeDelay: 1
   playerHP: {fileID: 0}
@@ -18576,7 +18576,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerTarget: {fileID: 1230301617}
-  movementSpeed: 1
+  movementSpeed: 1.5
   stopDistance: 1
   resumeDelay: 1
   playerHP: {fileID: 0}
@@ -19555,7 +19555,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerTarget: {fileID: 1230301617}
-  movementSpeed: 1
+  movementSpeed: 1.5
   stopDistance: 1
   resumeDelay: 1
   playerHP: {fileID: 0}
@@ -45716,7 +45716,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1aa69d4a0037e4c4e9e42558de86be8f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
+  maxHealth: 50
   currentHealth: 0
   healthImage: {fileID: 1025552922}
   uIManager: {fileID: 287421104}
@@ -45952,7 +45952,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerTarget: {fileID: 1230301617}
-  movementSpeed: 1
+  movementSpeed: 1.5
   stopDistance: 1
   resumeDelay: 1
   playerHP: {fileID: 0}
@@ -51635,7 +51635,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerTarget: {fileID: 1230301617}
-  movementSpeed: 1
+  movementSpeed: 1.5
   stopDistance: 1
   resumeDelay: 1
   playerHP: {fileID: 0}
@@ -52244,7 +52244,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerTarget: {fileID: 1230301617}
-  movementSpeed: 1
+  movementSpeed: 1.5
   stopDistance: 1
   resumeDelay: 1
   playerHP: {fileID: 0}
@@ -59160,7 +59160,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerTarget: {fileID: 1230301617}
-  movementSpeed: 1
+  movementSpeed: 1.5
   stopDistance: 1
   resumeDelay: 1
   playerHP: {fileID: 0}
