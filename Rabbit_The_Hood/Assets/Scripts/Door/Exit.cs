@@ -5,6 +5,8 @@ public class Exit : MonoBehaviour
 {
     public bool playerWonGame = false;
     [SerializeField] private TMP_Text winText;
+
+    [SerializeField] private UIManager uiManager;
     private void Start()
     {
         playerWonGame = false;
@@ -17,7 +19,8 @@ public class Exit : MonoBehaviour
             if(player.lockedChestCollected && player.unlockedChestCollected)
             {
                 playerWonGame = true;
-                winText.text = "You have won the game!"; 
+                winText.text = "You have won the game!";
+                uiManager.GameWon();
                 Debug.Log("Win");
             }
         }

@@ -9,6 +9,8 @@ public class PlayerHP : MonoBehaviour
 
     [SerializeField] private Image healthImage;
 
+    [SerializeField] private UIManager uIManager;
+
     private void Start()
     {
         currentHealth = maxHealth;
@@ -20,7 +22,9 @@ public class PlayerHP : MonoBehaviour
         UpdateHealthUI();
         if (currentHealth <= 0)
         {
+            uIManager.GameLost();
             Time.timeScale = 0f;
+
         }
     }
 
